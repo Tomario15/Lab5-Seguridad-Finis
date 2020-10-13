@@ -10,6 +10,10 @@ server_address = ('localhost', 10000)
 print('connecting to {} port {}'.format(*server_address))
 sock.connect(server_address)
 
+#
+txt = open("mensajeentrada.txt","r")
+menEntrtxt = txt.read()
+txt.close()
 # P=primo G= 0<G<P  a,b = 0<a,b<P-1
 a = 15
 P = 103
@@ -54,9 +58,9 @@ try:
         if sendmens == False:
             key = bytes(str(K)+salt, 'utf-8')
             k = pyDes.des(key, pad=None, padmode=pyDes.PAD_PKCS5)
-            message = b"Hola que tal"
+            message = bytes(menEntrtxt, 'utf-8')
             
-            print('sending {!r}'.format(message))
+            #print('sending {!r}'.format(message))
             
             d = k.encrypt(message)
             print ("Encrypted: %r" % d)
