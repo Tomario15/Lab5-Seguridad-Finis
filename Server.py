@@ -48,14 +48,24 @@ while True:
                         #print("key is: ",K)
                     except:
                         pass
+                    
                 else:
                     key = bytes(str(K)+salt, 'utf-8')
                     k = pyDes.des(key, pad=None, padmode=pyDes.PAD_PKCS5)
 
-                    #mencrip = format(datarecv)
+                    while k.decrypt(datarecv) == b"":
+                        recvres = connection.recv(16)
+                        datarecv+= recvres
+
                     print('received {!r}'.format(datarecv))
+                    # desencriptamos y escribimos el mensaje recivido
                     print("Decrypted: %r" % k.decrypt(datarecv))
-    
+ 
+                    txt = open("mensajerecibido.txt","w")
+                    print("hola",format(k.decrypt(datarecv)).replace("b","").replace("'","")+"\n")
+                    menEntrtxt = txt.write(format(k.decrypt(datarecv)).replace("b","").replace("'","")+"\n")
+                    txt.close()   
+
             except:
                 # no hay mensaje
                 data = False
