@@ -44,7 +44,7 @@ try:
         #print('received {!r}'.format(data))
 
         # resuesta (B) a datos
-        res = format(data).replace("b","").replace("'","")
+        res = data.decode("utf-8")
 
         try:
             B=int(res)
