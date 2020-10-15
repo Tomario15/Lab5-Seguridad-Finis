@@ -64,7 +64,7 @@ try:
             #print('sending {!r}'.format(message))
             #enviamos el mensaje incriptado a Server
             d = k.encrypt(message)
-            print ("Encrypted: %r" % d)
+            print ("Enviando encrypted message: %r" % d)
             sock.sendall(d)
             
             sendmens = True
