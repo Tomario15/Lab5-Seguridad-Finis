@@ -22,20 +22,21 @@ G = 35
 A=(G**a)%P
 
 K = 0  #inicialmente no hay llave
-salt = "Kryzpo"
+#este "salt" esta porque no se me ocurria otra forma de solucionar el problema del largo minimo de la llave
+salt = "Kryzpo" 
 
 try:
 
     # Send data
     num=str(G)+","+str(P)+","+str(A)
     mes =bytes(num, 'utf-8') #G,P,A
-    print('sending {!r}'.format(mes))
+    #print('sending {!r}'.format(mes))
     sock.sendall(mes)
 
     # Look for the response
     amount_received = 0
     
-    # El cliente ha enviado el mensaje a server?
+    # El cliente ha enviado el B a server?
     sendmens = False
 
     while amount_received <= 0:
@@ -61,10 +62,12 @@ try:
             message = bytes(menEntrtxt, 'utf-8')
             
             #print('sending {!r}'.format(message))
-            
+            #enviamos el mensaje incriptado a Server
             d = k.encrypt(message)
             print ("Encrypted: %r" % d)
             sock.sendall(d)
+            
+            sendmens = True
 
 finally:
     print('closing socket')
