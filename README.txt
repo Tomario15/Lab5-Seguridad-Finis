@@ -1,4 +1,4 @@
-Referencias por si acaso:
+Referencias por si acaso, todo usa Python3:
 
 Libreria pyDes y codigo basado del example de:
  https://github.com/twhiteman/pyDes
