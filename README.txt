@@ -5,3 +5,6 @@ Libreria pyDes y codigo basado del example de:
 
 codigo base de Cliente y Servidor TCP/IP de:
  https://rico-schmidt.name/pymotw-3/socket/tcp.html
+
+Si no le subi video y no esta aes, pueees me quede sin tiempo(mala administracion)
+si esta leyendo estas lineas es porque estoy conciente de que no estan.
