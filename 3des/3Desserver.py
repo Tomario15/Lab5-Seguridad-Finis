@@ -16,6 +16,7 @@ sock.listen(1)
 # b
 b = 67
 K = 0  #inicialmente no hay llave
+#este "salt" esta porque no se me ocurria otra forma de solucionar el problema del largo minimo de la llave
 salt = "Kryzpo-T0ma2-tiuque-12"
 
 while True:
