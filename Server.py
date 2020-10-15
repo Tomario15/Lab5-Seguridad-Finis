@@ -16,6 +16,7 @@ sock.listen(1)
 # b
 b = 67
 K = 0  #inicialmente no hay llave
+#este "salt" esta porque no se me ocurria otra forma de solucionar el problema del largo minimo de la llave
 salt = "Kryzpo"
 
 while True:
@@ -53,19 +54,18 @@ while True:
                 else:
                     key = bytes(str(K)+salt, 'utf-8')
                     k = pyDes.des(key, pad=None, padmode=pyDes.PAD_PKCS5)
-                    
-                    # aseguramos recibir el mensaje completo
+                    # aseguramos de recivir todo el mensaje
                     while k.decrypt(datarecv) == b"":
                         recvres = connection.recv(16)
                         datarecv+= recvres
 
-                    # print('received {!r}'.format(datarecv))
+                    #print('received {!r}'.format(datarecv))
+                    #print("Decrypted: %r" % k.decrypt(datarecv))
+                    
                     # desencriptamos y escribimos el mensaje recivido
-                    print("Decrypted: %r" % k.decrypt(datarecv))
- 
                     txt = open("mensajerecibido.txt","w")
                     menEntrtxt = txt.write(k.decrypt(datarecv).decode("utf-8")+"\n")
-                    txt.close()                                    
+                    txt.close()
 
             except:
                 # no hay mensaje
