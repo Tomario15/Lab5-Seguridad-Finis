@@ -22,6 +22,7 @@ G = 35
 A=(G**a)%P
 
 K = 0  #inicialmente no hay llave
+#este "salt" esta porque no se me ocurria otra forma de solucionar el problema del largo minimo de la llave
 salt = "Kryzpo-T0ma2-tiuque-12"
 
 try:
